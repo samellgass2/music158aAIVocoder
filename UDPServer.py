@@ -58,5 +58,9 @@ if __name__ == "__main__":
     client = udp_client.SimpleUDPClient(args.sendIP, args.sendPort)
 
     # Create the harmonizer
+    # TODO: get UDP packet of key & voices (for now, just read from CLI)
+
     global majorHarmonizer
     majorHarmonizer = majorCounterPointHarmonizer(key=args.key, voices=args.voices)
+
+    # LOOP forever: if input, call majorHarmonizer
