@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 705.0, 121.0, 699.0, 708.0 ],
+		"rect" : [ 40.0, 82.0, 1469.0, 715.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,9 +44,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 213.0, 152.0, 37.0, 22.0 ],
-					"text" : "* 100"
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 213.0, 152.0, 47.0, 22.0 ],
+					"text" : "* 40.96"
 				}
 
 			}
@@ -71,10 +71,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 140.5, 429.0, 42.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "out~ 1"
 				}
 
@@ -99,10 +95,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 31.0, 102.0, 35.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "in~ 1"
 				}
 
@@ -115,10 +107,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 101.0, 68.0, 28.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "in 1"
 				}
 
@@ -195,7 +183,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Glide[1]",
+							"parameter_longname" : "Glide[2]",
 							"parameter_mmax" : 10000.0,
 							"parameter_shortname" : "Glide",
 							"parameter_type" : 0,
@@ -222,7 +210,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Transp[1]",
+							"parameter_longname" : "Transp[2]",
 							"parameter_mmax" : 2400.0,
 							"parameter_mmin" : -2400.0,
 							"parameter_shortname" : "Transp",
@@ -293,7 +281,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Quality[1]",
+							"parameter_longname" : "Quality[2]",
 							"parameter_mmax" : 3,
 							"parameter_shortname" : "Quality",
 							"parameter_type" : 2
