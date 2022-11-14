@@ -23,7 +23,7 @@ class majorCounterPointHarmonizer(harmonizer):
 
     def harmonize(self, note: int) -> list[int]:
         """Given a note, return a chord key major in n voices following counterpoint"""
-        note = note - self.key
+        note = (note - self.key) % 12
         if self.currchord is None:
             function = "tonic"
         else:
