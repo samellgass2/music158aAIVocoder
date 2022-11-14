@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 40.0, 82.0, 1469.0, 715.0 ],
+		"rect" : [ 40.0, 87.0, 1469.0, 715.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,9 +44,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "float" ],
-					"patching_rect" : [ 213.0, 152.0, 47.0, 22.0 ],
-					"text" : "* 40.96"
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 213.0, 152.0, 37.0, 22.0 ],
+					"text" : "* 100"
 				}
 
 			}
@@ -183,7 +183,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Glide[2]",
+							"parameter_longname" : "Glide",
 							"parameter_mmax" : 10000.0,
 							"parameter_shortname" : "Glide",
 							"parameter_type" : 0,
@@ -210,7 +210,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Transp[2]",
+							"parameter_longname" : "Transp",
 							"parameter_mmax" : 2400.0,
 							"parameter_mmin" : -2400.0,
 							"parameter_shortname" : "Transp",
@@ -281,7 +281,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Quality[2]",
+							"parameter_longname" : "Quality",
 							"parameter_mmax" : 3,
 							"parameter_shortname" : "Quality",
 							"parameter_type" : 2
@@ -434,7 +434,33 @@
 				}
 
 			}
- ]
+ ],
+		"parameters" : 		{
+			"obj-3" : [ "Glide", "Glide", 0 ],
+			"obj-71" : [ "Transp", "Transp", 0 ],
+			"obj-74" : [ "Quality", "Quality", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
+		"dependency_cache" : [ 			{
+				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0
 	}
 
 }

@@ -2,7 +2,6 @@
 # pypi page: https://pypi.org/project/python-osc/
 
 
-# Voices
 import argparse
 
 from pythonosc import udp_client
@@ -13,9 +12,10 @@ from harmonizer import *
 
 def returnNextChord(unused_addr, args):
     try:
+        print(type(Harmonizer))
         print(f'Note received!: {args}')
-        nextchord = majorHarmonizer.harmonize(args)
-        print(f'Current Chord: {majorHarmonizer.currchord}')
+        nextchord = Harmonizer.harmonize(args)
+        print(f'Current Chord: {Harmonizer.currchord}')
         print(f'Next Chord: {nextchord}')
         client.send_message('/chordList', nextchord)
     except ValueError:
@@ -23,6 +23,57 @@ def returnNextChord(unused_addr, args):
         print('Args:', args)
         print('Unused Addresses', unused_addr)
 
+def editNumVoices(unused_addr, args):
+    try:
+        global numVoices
+        if args == numVoices:
+            return
+        print(f'New number of voices received: {args}')
+        numVoices = args
+        createHarmonizer()
+    except ValueError:
+        print('Value Error')
+        print('Args:', args)
+        print('Unused Addresses', unused_addr)
+
+def editKey(unused_addr, args):
+    try:
+        global key
+        if args == key:
+            return
+        print(f'New key received: {args}')
+        key = args
+        createHarmonizer()
+    except ValueError:
+        print('Value Error')
+        print('Args:', args)
+        print('Unused Addresses', unused_addr)
+
+def editHarmonizerType(unused_addr, args):
+    try:
+        global harmonizerType
+        if args == harmonizerType:
+            return
+        print(f'New Harmonizer Type received: {args}')
+        harmonizerType = args
+        createHarmonizer()
+    except ValueError:
+        print('Value Error')
+        print('Args:', args)
+        print('Unused Addresses', unused_addr)
+
+def createHarmonizer():
+    global Harmonizer
+    global numVoices
+    global key
+    if harmonizerType == 1:
+        Harmonizer = majorCounterPointHarmonizer(numVoices, key)
+    elif harmonizerType == 2:
+        Harmonizer = minorCounterPointHarmonizer(numVoices, key)
+    elif harmonizerType == 3:
+        Harmonizer = powerChordHarmonizer(numVoices, key)
+    else:
+        raise RuntimeError('Wrong type of Harmonizer submitted!')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -38,12 +89,17 @@ if __name__ == "__main__":
     parser.add_argument("--voices", default=4, help='The number of voices')
     args = parser.parse_args()
 
+    global numVoices
+    numVoices = args.voices
 
-    # Create the harmonizer
-    # TODO: get UDP packet of key & voices (for now, just read from CLI)
+    global harmonizerType
+    harmonizerType = 0
+
+    global key
+    key = args.key
 
     global majorHarmonizer
-    majorHarmonizer = majorCounterPointHarmonizer(voices=args.voices, key=args.key)
+    Harmonizer = majorCounterPointHarmonizer(voices=args.voices, key=args.key)
 
     # Create the client to send OSC info back to max.
     global client
@@ -52,9 +108,12 @@ if __name__ == "__main__":
     # UDP Server Stuff ----------------------------------------------
 
     # Create the dispatcher. This is where we bind functions and their OSC variables / addresses.
-    # TODO: Change below.We probably map some sort of 'change' to the main function here.
     dispatcher = dispatcher.Dispatcher()
     dispatcher.map('/midiNoteIn', returnNextChord)
+    dispatcher.map('/voices', editNumVoices)
+    dispatcher.map('/h', editHarmonizerType)
+    dispatcher.map('/key', editKey)
+
 
     # Start the UDP server with the dispatcher
     server = osc_server.ThreadingOSCUDPServer(

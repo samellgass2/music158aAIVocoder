@@ -40,6 +40,100 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-78",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1204.0, 478.0, 150.0, 20.0 ],
+					"text" : "Harmonizer Type"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-75",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1204.0, 534.0, 150.0, 20.0 ],
+					"text" : "Voices"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-73",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 1204.0, 586.0, 29.5, 22.0 ],
+					"text" : "+ 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-72",
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1204.0, 615.5, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-42",
+					"maxclass" : "live.menu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1204.0, 563.0, 150.0, 15.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_enum" : [ "one", "two", "three", "four", "five", "six", "seven", "eight" ],
+							"parameter_longname" : "live.menu[1]",
+							"parameter_mmax" : 7,
+							"parameter_shortname" : "live.menu[1]",
+							"parameter_type" : 2
+						}
+
+					}
+,
+					"varname" : "live.menu[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-41",
+					"maxclass" : "live.menu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1204.0, 505.0, 149.5, 15.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_enum" : [ "Major", "Minor", "Power" ],
+							"parameter_longname" : "live.menu",
+							"parameter_mmax" : 2,
+							"parameter_shortname" : "live.menu",
+							"parameter_type" : 2
+						}
+
+					}
+,
+					"varname" : "live.menu"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-70",
 					"maxclass" : "number",
 					"numinlets" : 1,
@@ -739,11 +833,11 @@
 				"box" : 				{
 					"id" : "obj-18",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 1050.0, 652.0, 108.0, 22.0 ],
-					"text" : "o.pack /midiNoteIn"
+					"patching_rect" : [ 1050.0, 652.0, 215.0, 22.0 ],
+					"text" : "o.pack /midiNoteIn /majorType\\, /voices"
 				}
 
 			}
@@ -1000,8 +1094,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1184.5, 14.708333238959312, 115.0, 22.0 ],
-					"text" : "replace 2_tri_r14.aif"
+					"patching_rect" : [ 1184.5, 14.708333238959312, 109.0, 22.0 ],
+					"text" : "replace sample.aiff"
 				}
 
 			}
@@ -1501,6 +1595,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-18", 1 ],
+					"source" : [ "obj-41", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-73", 0 ],
+					"source" : [ "obj-42", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
 					"source" : [ "obj-49", 0 ]
 				}
@@ -1601,6 +1709,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-18", 2 ],
+					"source" : [ "obj-72", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-72", 0 ],
+					"source" : [ "obj-73", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"midpoints" : [ 274.083333522081375, 480.0, 111.916666477918625, 480.0 ],
 					"order" : 2,
@@ -1648,6 +1770,8 @@
 			"obj-133.1::obj-3" : [ "Glide[2]", "Glide", 0 ],
 			"obj-133.1::obj-71" : [ "Transp[2]", "Transp", 0 ],
 			"obj-133.1::obj-74" : [ "Quality[2]", "Quality", 0 ],
+			"obj-41" : [ "live.menu", "live.menu", 0 ],
+			"obj-42" : [ "live.menu[1]", "live.menu[1]", 0 ],
 			"obj-51" : [ "Gain[5]", "Gain", 0 ],
 			"obj-61.1::obj-3" : [ "Glide", "Glide", 0 ],
 			"obj-61.1::obj-71" : [ "Transp", "Transp", 0 ],
