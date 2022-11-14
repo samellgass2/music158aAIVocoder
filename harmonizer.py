@@ -101,7 +101,7 @@ class powerChordHarmonizer(harmonizer):
         notes = [0, 4, 7]
         octaveoffset = 0
         for index in range(len(self.voices)):
-            newchord.append(notes[index % 3] + 12 * octaveoffset + note)
+            newchord.append(notes[index % 3] + 12 * octaveoffset + (note%12))
             if index >= 3 and index % 3 == 0:
                 octaveoffset += 1
         self.voices = newchord
