@@ -63,6 +63,38 @@ chord_to_function = {
     "vii" : "dominant"
 }
 
+min_to_majNote = {
+    0 : 0,
+    2 : 2,
+    4 : 3,
+    5 : 5,
+    7 : 7,
+    9 : 8,
+    11 : 11
+}
+
+min_to_majChord = {
+    "I" : "i",
+    "ii" : "iio",
+    "iii" : "III",
+    "IV" : "iv",
+    "V" : "V",
+    "V7" : "V7",
+    "vi" : "VI",
+    "vii" : "VII"
+}
+
+maj_to_minChord = {
+    "i" : "I",
+    "iio" : "ii",
+    "III" : "iii",
+    "iv" : "IV",
+    "V" : "V",
+    "V7" : "V7",
+    "VI" : "vi",
+    "VII" : "vii"
+}
+
 chord_from_note_and_function = {
     (0, "tonic") : {
         "I" : 0.5,

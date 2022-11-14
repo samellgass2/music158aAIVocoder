@@ -92,3 +92,43 @@ class majorCounterPointHarmonizer(harmonizer):
 
         self.voices = new_voices
 
+class powerChordHarmonizer(harmonizer):
+    def __init__(self, voices, key):
+        super().__init__(voices, key)
+
+    def harmonize(self, note: int) -> list[int]:
+        newchord = []
+        notes = [0, 4, 7]
+        octaveoffset = 0
+        for index in range(len(self.voices)):
+            newchord.append(notes[index % 3] + 12 * octaveoffset + note)
+            if index >= 3 and index % 3 == 0:
+                octaveoffset += 1
+        self.voices = newchord
+        return newchord
+
+class minorCounterPointHarmonizer(majorCounterPointHarmonizer):
+    def __init__(self, voices, key):
+        super().__init__(voices, key)
+
+    def turn_minor(self, voices) -> (list[int], str):
+        newvoices = []
+        for note in self.voices:
+            offset = note // 12
+            rawnote = note % 12
+            newvoices.append(min_to_majNote[rawnote] + 12*offset)
+
+        return newvoices
+
+    def harmonize(self, note: int) -> list[int]:
+        self.currchord = maj_to_minChord.get(self.currchord)
+        rawvoices = super().harmonize(note)
+        minorvoices = self.turn_minor(rawvoices)
+        self.currchord = min_to_majChord.get(self.currchord)
+        self.voices = minorvoices
+        return minorvoices
+
+
+
+
+
