@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 813.0, 94.0, 699.0, 708.0 ],
+		"rect" : [ 40.0, 82.0, 1469.0, 715.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 213.0, 152.0, 47.0, 22.0 ],
+					"text" : "* 40.96"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-6",
@@ -72,18 +84,6 @@
 					"outlettype" : [ "", "", "FullPacket" ],
 					"patching_rect" : [ 267.0, 122.0, 118.0, 22.0 ],
 					"text" : "o.route /transp /glide"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-18",
-					"maxclass" : "newobj",
-					"numinlets" : 6,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 213.0, 159.5, 141.0, 22.0 ],
-					"text" : "scale 0 200 -2400. 2400."
 				}
 
 			}
@@ -183,7 +183,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Glide[1]",
+							"parameter_longname" : "Glide[2]",
 							"parameter_mmax" : 10000.0,
 							"parameter_shortname" : "Glide",
 							"parameter_type" : 0,
@@ -204,13 +204,13 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 213.0, 194.5, 56.0, 48.0 ],
+					"patching_rect" : [ 208.0, 191.0, 56.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Transp[1]",
+							"parameter_longname" : "Transp[2]",
 							"parameter_mmax" : 2400.0,
 							"parameter_mmin" : -2400.0,
 							"parameter_shortname" : "Transp",
@@ -281,7 +281,7 @@
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Quality[1]",
+							"parameter_longname" : "Quality[2]",
 							"parameter_mmax" : 3,
 							"parameter_shortname" : "Quality",
 							"parameter_type" : 2
@@ -352,22 +352,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-71", 0 ],
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
-					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-19", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-19", 0 ]
 				}
 
 			}
@@ -431,6 +424,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-71", 0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
